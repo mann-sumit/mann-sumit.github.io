@@ -108,40 +108,36 @@ right: 24px;
 
   </div>
  <script>
+let pendingUpdate = false;
 
-  function setPlatformInfo() {
-    var ua = navigator.userAgent.toLowerCase(); 
-    if (ua.indexOf('safari') != -1) { 
-      if (ua.indexOf('chrome') > -1) {
-        document.body.classList.add('chrome');
-      } else {
-        document.body.classList.add('safari');
-      }
-    }
-  }
-   document.querySelector('.one').addEventListener("click", function() {
-     setPlatformInfo();
-     document.querySelector('.fixed-wrapper').classList.add('show');
-   });
-    document.querySelector('.one').addEventListener("blur", function() {
-     document.querySelector('.fixed-wrapper').classList.remove('show');
-       document.body.classList.remove('safari');
-      document.body.classList.remove('chrome');
-      setTimeout(function() {
-          window.scrollTo(0, 0);
-      }, 200);
-   });
-   document.querySelector('.two').addEventListener("click", function() {
-     setPlatformInfo();
-     document.querySelector('.fixed-wrapper').classList.add('show');
-   });
-   document.querySelector('.two').addEventListener("blur", function() {
-      document.querySelector('.fixed-wrapper').classList.remove('show');
-      document.body.classList.remove('safari');
-      document.body.classList.remove('chrome');
-     setTimeout(function() {
-          window.scrollTo(0, 0);
-      }, 200);
-   });
+function viewportHandler(event) {
+  if (pendingUpdate) return;
+  pendingUpdate = true;
+
+  requestAnimationFrame(() => {
+    pendingUpdate = false;
+    const layoutViewport = document.getElementById('root');
+    const viewport = event.target;
+    const offsetTop = viewport.height
+                - layoutViewport.getBoundingClientRect().height
+                + viewport.offsetTop;
+    document.querySelector('.fixed-wrapper').style.transform = `translate3d(0, ${offsetTop}px), 0)`;
+  });
+}
+
+window.visualViewport.addEventListener('scroll', viewportHandler);
+window.visualViewport.addEventListener('resize', viewportHandler);
+//    document.querySelector('.one').addEventListener("click", function() {
+//      document.querySelector('.fixed-wrapper').classList.add('show');
+//    });
+//     document.querySelector('.one').addEventListener("blur", function() {
+//      document.querySelector('.fixed-wrapper').classList.remove('show');
+//    });
+//    document.querySelector('.two').addEventListener("click", function() {
+//      document.querySelector('.fixed-wrapper').classList.add('show');
+//    });
+//    document.querySelector('.two').addEventListener("blur", function() {
+//       document.querySelector('.fixed-wrapper').classList.remove('show');
+//    });
   </script>
 </body></html>
