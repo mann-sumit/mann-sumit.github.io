@@ -91,7 +91,7 @@ transform: none;
     <div class="header"></div>
 <div class="main">
   <div class="text">
-    <div class="editable one" contenteditable="">
+    <div class="editable one" contenteditable="" virtualkeyboardpolicy="manual">
   Editable Text
 </div>
   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
@@ -102,7 +102,7 @@ transform: none;
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-<div class="editable two" contenteditable="">
+<div class="editable two" contenteditable="" virtualkeyboardpolicy="manual">
   Editable Text
 </div>
     but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -131,18 +131,23 @@ transform: none;
   </div>
   </div>
  <script>
+   if ("virtualKeyboard" in navigator) {
+    navigator.virtualKeyboard.overlaysContent = true;
    document.querySelector('.one').addEventListener("click", function() {
      document.querySelector('.fixed-wrapper').classList.add('show');
+     navigator.virtualKeyboard.show();
    });
     document.querySelector('.one').addEventListener("blur", function() {
      document.querySelector('.fixed-wrapper').classList.remove('show');
-      window
+      navigator.virtualKeyboard.show();
    });
    document.querySelector('.two').addEventListener("click", function() {
      document.querySelector('.fixed-wrapper').classList.add('show');
+     navigator.virtualKeyboard.show();
    });
     document.querySelector('.two').addEventListener("blur", function() {
      document.querySelector('.fixed-wrapper').classList.remove('show');
+      navigator.virtualKeyboard.show();
    });
   </script>
 </body></html>
