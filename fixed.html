@@ -120,6 +120,7 @@ right: 24px;
     }
   }
    document.querySelector('.one').addEventListener("click", function() {
+     setPlatformInfo();
      document.querySelector('.fixed-wrapper').classList.add('show');
    });
     document.querySelector('.one').addEventListener("blur", function() {
@@ -131,6 +132,7 @@ right: 24px;
       }, 200);
    });
    document.querySelector('.two').addEventListener("click", function() {
+     setPlatformInfo();
      document.querySelector('.fixed-wrapper').classList.add('show');
    });
    document.querySelector('.two').addEventListener("blur", function() {
