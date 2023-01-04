@@ -121,7 +121,7 @@ function viewportHandler(event) {
     const offsetTop = viewport.height
                 - layoutViewport.getBoundingClientRect().height
                 + viewport.offsetTop;
-    document.querySelector('.fixed-wrapper').style.transform = `translate3d(0, ${offsetTop}px), 0)`;
+    document.querySelector('.fixed').style.transform = `translate3d(0, ${offsetTop}px), 0)`;
   });
 }
 
