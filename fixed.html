@@ -10,15 +10,18 @@ html {
   overflow:hidden;
   padding: 0;
   margin: 0;
+  min-height: -webkit-fill-available;
 }
 #root {
   overflow: auto;
   height: 100%;
+  min-height: -webkit-fill-available;
 }
 .main {
   overflow-x: hidden;
   overflow-y: auto;
   width: 100%;
+  min-height: -webkit-fill-available;
 }
 
 .text {
@@ -88,6 +91,9 @@ transform: none;
     <div class="header"></div>
 <div class="main">
   <div class="text">
+    <div class="editable one" contenteditable="">
+  Editable Text
+</div>
   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
@@ -96,7 +102,7 @@ transform: none;
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-<div class="editable" contenteditable="">
+<div class="editable two" contenteditable="">
   Editable Text
 </div>
     but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -125,8 +131,18 @@ transform: none;
   </div>
   </div>
  <script>
-   document.querySelector('.editable').addEventListener("click", function() {
+   document.querySelector('.one').addEventListener("click", function() {
      document.querySelector('.fixed-wrapper').classList.add('show');
+   });
+    document.querySelector('.one').addEventListener("blur", function() {
+     document.querySelector('.fixed-wrapper').classList.remove('show');
+      window
+   });
+   document.querySelector('.two').addEventListener("click", function() {
+     document.querySelector('.fixed-wrapper').classList.add('show');
+   });
+    document.querySelector('.two').addEventListener("blur", function() {
+     document.querySelector('.fixed-wrapper').classList.remove('show');
    });
   </script>
 </body></html>
